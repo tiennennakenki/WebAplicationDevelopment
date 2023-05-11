@@ -29,12 +29,12 @@
     <Property Name="HoTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="SDT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Matkhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Matkhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="GioiTinh" Type="Boolean" />
     <NavigationProperty Name="HoaDons" Relationship="Self.FK__HoaDon__MaKH__151B244E" FromRole="KhachHang" ToRole="HoaDon" />
-    <Property Name="NgaySinh" Type="DateTime" Precision="0" Nullable="false" />
-    <Property Name="RoleUser" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+    <Property Name="RoleUser" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
   </EntityType>
   <EntityType Name="LoaiSP">
     <Key>
@@ -68,7 +68,7 @@
       <PropertyRef Name="MaSP" />
     </Key>
     <Property Name="MaSP" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="TenSP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TenSP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="AnhSP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="MoTaSP" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="MaLSP" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />

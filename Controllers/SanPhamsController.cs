@@ -13,6 +13,7 @@ namespace DoAnWeb.Controllers
     {
         private NHOMWEBEntities db = new NHOMWEBEntities();
 
+        
         public ActionResult RemoveFromCart(string id)
         {
             if (id == null)
@@ -105,6 +106,20 @@ namespace DoAnWeb.Controllers
                 return View(sanPhams.ToList());
             }
         }
+
+        public ActionResult IndexAdmin()
+        {
+            if (Session["RoleUser"] != null)
+            {
+                var sanPhams = db.SanPhams.Include(p => p.LoaiSP);
+                return View(sanPhams.ToList());
+            }
+            else
+            {
+                return RedirectToAction("Default", "SanPhams");
+
+            }
+        }
         public ActionResult TimKiem(string searchString)
         {
             var sanPhams = db.SanPhams.Where(s => s.TenSP.Contains(searchString)).ToList();
@@ -128,9 +143,17 @@ namespace DoAnWeb.Controllers
         // GET: SanPhams/Create
         public ActionResult Create()
         {
-            ViewBag.MaLSP = new SelectList(db.LoaiSPs, "MaLSP", "TenLSP");
-            ViewBag.MaNCC = new SelectList(db.NhaCungCaps, "MaNCC", "TenNCC");
-            return View();
+            if (Session["RoleUser"] != null)
+            {
+                ViewBag.MaLSP = new SelectList(db.LoaiSPs, "MaLSP", "TenLSP");
+                ViewBag.MaNCC = new SelectList(db.NhaCungCaps, "MaNCC", "TenNCC");
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Default", "SanPhams");
+
+            }
         }
 
         // POST: SanPhams/Create
@@ -159,6 +182,13 @@ namespace DoAnWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
+            // Kiểm tra quyền của người dùng
+            if (Session["RoleUser"] == null)
+            {
+                return RedirectToAction("Default", "SanPhams");
+            }
+
             SanPham sanPham = db.SanPhams.Find(id);
             if (sanPham == null)
             {
@@ -193,6 +223,11 @@ namespace DoAnWeb.Controllers
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            if (Session["RoleUser"] == null)
+            {
+                return RedirectToAction("Default", "SanPhams");
             }
             SanPham sanPham = db.SanPhams.Find(id);
             if (sanPham == null)
