@@ -109,7 +109,7 @@
                         <ul class="header-links pull-right">
                             @if (customer.RoleUser != null)
                             {
-                                <li><a href="/SanPhams/Create"><i class="fa fa-pencil"></i> Quản lý sản phẩm</a></li>
+                                <li><a href="/SanPhams/IndexAdmin"><i class="fa fa-pencil"></i> Quản lý sản phẩm</a></li>
                                 <li><a href="/KhachHangs/Index"><i class="fa fa-pencil"></i> Quản lý khách hàng</a></li>
                             }
                             <li><a onclick="location.href='@Url.Action("Details","KhachHangs", new { id = customer.MaKH})'"><i class="fa fa-user-o"></i> Tài khoản của tôi</a></li>

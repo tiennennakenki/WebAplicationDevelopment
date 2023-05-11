@@ -25,15 +25,15 @@
     <EntitySetMapping Name="KhachHangs">
       <EntityTypeMapping TypeName="NHOMWEBModel.KhachHang">
         <MappingFragment StoreEntitySet="KhachHang">
-          <ScalarProperty Name="RoleUser" ColumnName="RoleUser" />
+          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
           <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+          <ScalarProperty Name="RoleUser" ColumnName="RoleUser" />
           <ScalarProperty Name="MaKH" ColumnName="MaKH" />
           <ScalarProperty Name="HoTen" ColumnName="HoTen" />
           <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
           <ScalarProperty Name="SDT" ColumnName="SDT" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Matkhau" ColumnName="Matkhau" />
-          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -27,7 +27,7 @@ namespace DoAnWeb.Models
         public string Email { get; set; }
         public string Matkhau { get; set; }
         public Nullable<bool> GioiTinh { get; set; }
-        public System.DateTime NgaySinh { get; set; }
+        public Nullable<System.DateTime> NgaySinh { get; set; }
         public string RoleUser { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

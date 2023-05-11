@@ -27,11 +27,11 @@
     <Property Name="HoTen" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="DiaChi" Type="nvarchar" MaxLength="100" />
     <Property Name="SDT" Type="varchar" MaxLength="20" />
-    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Matkhau" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Matkhau" Type="nvarchar" MaxLength="50" />
+    <Property Name="RoleUser" Type="nchar" MaxLength="10" />
+    <Property Name="NgaySinh" Type="date" />
     <Property Name="GioiTinh" Type="bit" />
-    <Property Name="NgaySinh" Type="date" Nullable="false" />
-    <Property Name="RoleUser" Type="varchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="LoaiSP">
     <Key>
@@ -63,14 +63,14 @@
       <PropertyRef Name="MaSP" />
     </Key>
     <Property Name="MaSP" Type="nvarchar" MaxLength="10" Nullable="false" />
-    <Property Name="TenSP" Type="nvarchar" MaxLength="100" />
+    <Property Name="TenSP" Type="nvarchar" MaxLength="50" />
     <Property Name="AnhSP" Type="varchar" MaxLength="100" />
     <Property Name="MoTaSP" Type="text" />
     <Property Name="MaLSP" Type="nvarchar" MaxLength="10" />
     <Property Name="MaNCC" Type="nvarchar" MaxLength="10" />
     <Property Name="DonGia" Type="decimal" Precision="10" Scale="2" Nullable="false" />
   </EntityType>
-  <Association Name="FK__GioHang__MaSP__14270015">
+  <Association Name="FK__GioHang__ThoiGia__5CD6CB2B">
     <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
     <End Role="GioHang" Type="Self.GioHang" Multiplicity="*" />
     <ReferentialConstraint>
@@ -82,31 +82,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__GioHang__MaSP__1EA48E88">
-    <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
-    <End Role="GioHang" Type="Self.GioHang" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SanPham">
-        <PropertyRef Name="MaSP" />
-      </Principal>
-      <Dependent Role="GioHang">
-        <PropertyRef Name="MaSP" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__GioHang__MaSP__22751F6C">
-    <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
-    <End Role="GioHang" Type="Self.GioHang" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SanPham">
-        <PropertyRef Name="MaSP" />
-      </Principal>
-      <Dependent Role="GioHang">
-        <PropertyRef Name="MaSP" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__HoaDon__MaKH__151B244E">
+  <Association Name="FK__HoaDon__MaKH__4BAC3F29">
     <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
     <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
     <ReferentialConstraint>
@@ -118,31 +94,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__HoaDon__MaKH__1F98B2C1">
-    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
-    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="KhachHang">
-        <PropertyRef Name="MaKH" />
-      </Principal>
-      <Dependent Role="HoaDon">
-        <PropertyRef Name="MaKH" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__HoaDon__MaKH__236943A5">
-    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
-    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="KhachHang">
-        <PropertyRef Name="MaKH" />
-      </Principal>
-      <Dependent Role="HoaDon">
-        <PropertyRef Name="MaKH" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__SanPham__MaLSP__160F4887">
+  <Association Name="FK__SanPham__MaLSP__5441852A">
     <End Role="LoaiSP" Type="Self.LoaiSP" Multiplicity="0..1" />
     <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
     <ReferentialConstraint>
@@ -154,55 +106,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__SanPham__MaLSP__208CD6FA">
-    <End Role="LoaiSP" Type="Self.LoaiSP" Multiplicity="0..1" />
-    <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="LoaiSP">
-        <PropertyRef Name="MaLSP" />
-      </Principal>
-      <Dependent Role="SanPham">
-        <PropertyRef Name="MaLSP" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__SanPham__MaLSP__245D67DE">
-    <End Role="LoaiSP" Type="Self.LoaiSP" Multiplicity="0..1" />
-    <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="LoaiSP">
-        <PropertyRef Name="MaLSP" />
-      </Principal>
-      <Dependent Role="SanPham">
-        <PropertyRef Name="MaLSP" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__SanPham__MaNCC__17036CC0">
-    <End Role="NhaCungCap" Type="Self.NhaCungCap" Multiplicity="0..1" />
-    <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="NhaCungCap">
-        <PropertyRef Name="MaNCC" />
-      </Principal>
-      <Dependent Role="SanPham">
-        <PropertyRef Name="MaNCC" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__SanPham__MaNCC__2180FB33">
-    <End Role="NhaCungCap" Type="Self.NhaCungCap" Multiplicity="0..1" />
-    <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="NhaCungCap">
-        <PropertyRef Name="MaNCC" />
-      </Principal>
-      <Dependent Role="SanPham">
-        <PropertyRef Name="MaNCC" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__SanPham__MaNCC__25518C17">
+  <Association Name="FK__SanPham__MaNCC__5535A963">
     <End Role="NhaCungCap" Type="Self.NhaCungCap" Multiplicity="0..1" />
     <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
     <ReferentialConstraint>
@@ -225,51 +129,19 @@
     <EntitySet Name="NhaCungCap" EntityType="Self.NhaCungCap" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__GioHang__MaSP__14270015" Association="Self.FK__GioHang__MaSP__14270015">
+    <AssociationSet Name="FK__GioHang__ThoiGia__5CD6CB2B" Association="Self.FK__GioHang__ThoiGia__5CD6CB2B">
       <End Role="SanPham" EntitySet="SanPham" />
       <End Role="GioHang" EntitySet="GioHang" />
     </AssociationSet>
-    <AssociationSet Name="FK__GioHang__MaSP__1EA48E88" Association="Self.FK__GioHang__MaSP__1EA48E88">
-      <End Role="SanPham" EntitySet="SanPham" />
-      <End Role="GioHang" EntitySet="GioHang" />
-    </AssociationSet>
-    <AssociationSet Name="FK__GioHang__MaSP__22751F6C" Association="Self.FK__GioHang__MaSP__22751F6C">
-      <End Role="SanPham" EntitySet="SanPham" />
-      <End Role="GioHang" EntitySet="GioHang" />
-    </AssociationSet>
-    <AssociationSet Name="FK__HoaDon__MaKH__151B244E" Association="Self.FK__HoaDon__MaKH__151B244E">
+    <AssociationSet Name="FK__HoaDon__MaKH__4BAC3F29" Association="Self.FK__HoaDon__MaKH__4BAC3F29">
       <End Role="KhachHang" EntitySet="KhachHang" />
       <End Role="HoaDon" EntitySet="HoaDon" />
     </AssociationSet>
-    <AssociationSet Name="FK__HoaDon__MaKH__1F98B2C1" Association="Self.FK__HoaDon__MaKH__1F98B2C1">
-      <End Role="KhachHang" EntitySet="KhachHang" />
-      <End Role="HoaDon" EntitySet="HoaDon" />
-    </AssociationSet>
-    <AssociationSet Name="FK__HoaDon__MaKH__236943A5" Association="Self.FK__HoaDon__MaKH__236943A5">
-      <End Role="KhachHang" EntitySet="KhachHang" />
-      <End Role="HoaDon" EntitySet="HoaDon" />
-    </AssociationSet>
-    <AssociationSet Name="FK__SanPham__MaLSP__160F4887" Association="Self.FK__SanPham__MaLSP__160F4887">
+    <AssociationSet Name="FK__SanPham__MaLSP__5441852A" Association="Self.FK__SanPham__MaLSP__5441852A">
       <End Role="LoaiSP" EntitySet="LoaiSP" />
       <End Role="SanPham" EntitySet="SanPham" />
     </AssociationSet>
-    <AssociationSet Name="FK__SanPham__MaLSP__208CD6FA" Association="Self.FK__SanPham__MaLSP__208CD6FA">
-      <End Role="LoaiSP" EntitySet="LoaiSP" />
-      <End Role="SanPham" EntitySet="SanPham" />
-    </AssociationSet>
-    <AssociationSet Name="FK__SanPham__MaLSP__245D67DE" Association="Self.FK__SanPham__MaLSP__245D67DE">
-      <End Role="LoaiSP" EntitySet="LoaiSP" />
-      <End Role="SanPham" EntitySet="SanPham" />
-    </AssociationSet>
-    <AssociationSet Name="FK__SanPham__MaNCC__17036CC0" Association="Self.FK__SanPham__MaNCC__17036CC0">
-      <End Role="NhaCungCap" EntitySet="NhaCungCap" />
-      <End Role="SanPham" EntitySet="SanPham" />
-    </AssociationSet>
-    <AssociationSet Name="FK__SanPham__MaNCC__2180FB33" Association="Self.FK__SanPham__MaNCC__2180FB33">
-      <End Role="NhaCungCap" EntitySet="NhaCungCap" />
-      <End Role="SanPham" EntitySet="SanPham" />
-    </AssociationSet>
-    <AssociationSet Name="FK__SanPham__MaNCC__25518C17" Association="Self.FK__SanPham__MaNCC__25518C17">
+    <AssociationSet Name="FK__SanPham__MaNCC__5535A963" Association="Self.FK__SanPham__MaNCC__5535A963">
       <End Role="NhaCungCap" EntitySet="NhaCungCap" />
       <End Role="SanPham" EntitySet="SanPham" />
     </AssociationSet>
