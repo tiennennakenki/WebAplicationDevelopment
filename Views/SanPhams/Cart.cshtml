@@ -1,0 +1,61 @@
+﻿@using DoAnWeb.Models
+@model List<DoAnWeb.Models.SanPham>
+@using System.Globalization
+
+
+<style>
+    .product-name {
+        padding-right: 10px;
+    }
+
+    .product-price {
+        padding-left: 10px;
+    }
+
+    .product-quality {
+        padding-left: 10px;
+    }
+</style>
+
+<h2>Giỏ hàng của bạn</h2>
+@{ 
+    decimal tongtien = 0;
+}
+
+@if (Model.Count == 0)
+{
+    <p>Không có sản phẩm nào trong giỏ hàng.</p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th class="col-lg-4">Tên sản phẩm</th>
+                <th class="col-lg-4">Giá</th>
+                <th class="col-lg-4">Số lượng</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="product-name col-lg-4">@item.TenSP</td>
+                    <td class="product-price col-lg-4">@item.DonGia.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")).Replace(",", ".") VND </td>
+                    <td class="product-quality col-lg-4">1</td>
+                    <th>
+                        <form method="post" action="@Url.Action("RemoveFromCart", "SanPhams", new { id = item.MaSP })">
+                            <input type="submit" value="Xóa" />
+                        </form>
+                    </th>
+                </tr>
+                tongtien += item.DonGia;
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">Tổng tiền: @tongtien.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")).Replace(",", ".") VND</td>
+            </tr>
+        </tfoot>
+    </table>
+}

@@ -1,0 +1,21 @@
+﻿@model IEnumerable<DoAnWeb.Models.SanPham>
+<nav id="navigation">
+    <!-- container -->
+    <div class="container">
+        <!-- responsive-nav -->
+        <div id="responsive-nav">
+            <!-- NAV -->
+            <ul class="main-nav nav navbar-nav">
+                <li class="active"><a href="/SanPhams/Default">Trang Chủ</a></li>
+                <li><a href="/SanPhams/Index">Tất Cả</a></li>
+                @foreach (var item in Model.Select(x => x.LoaiSP).Distinct())
+                {
+                    <li><a href="/SanPhams?spid=@item.MaLSP">@item.TenLSP</a></li>
+                }
+            </ul>
+            <!-- /NAV -->
+        </div>
+        <!-- /responsive-nav -->
+    </div>
+    <!-- /container -->
+</nav>

@@ -1,0 +1,228 @@
+﻿@model List<DoAnWeb.Models.SanPham>
+@using DoAnWeb.Models
+@using System.Globalization
+
+
+@{
+    ViewBag.Title = "CheckOut";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thanh Toán</h2>
+@{ var customer = Session["KhachHang"] as DoAnWeb.Models.KhachHang;
+    decimal tongtien = 0;
+}
+
+
+@using (Html.BeginForm("CheckOut", "HoaDons", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="section">
+        <!-- container -->
+        <div class="container form-horizontal">
+            <!-- row -->
+            <div class="row">
+
+                <div class="col-md-7">
+                    <!-- Billing Details -->
+                    <div class="billing-details">
+                        <div class="section-title">
+                            <h3 class="title">Thông tin cá nhân</h3>
+                        </div>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => customer.MaKH)
+                        <div class="form-group">
+                            @Html.LabelFor(model => customer.HoTen, "Họ tên", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => customer.HoTen, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => customer.HoTen, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => customer.DiaChi, "Địa chỉ", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => customer.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => customer.DiaChi, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => customer.SDT, "SĐT", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => customer.SDT, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => customer.SDT, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => customer.GioiTinh, "Giới tính", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <label class="radio-inline">
+                                    @Html.RadioButtonFor(model => customer.GioiTinh, true) Nam
+                                </label>
+                                <label class="radio-inline">
+                                    @Html.RadioButtonFor(model => customer.GioiTinh, false) Nữ
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => customer.NgaySinh, "Ngày sinh", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => customer.NgaySinh, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => customer.NgaySinh, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => customer.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => customer.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => customer.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        @*<div class="form-group">
+                                <div class="input-checkbox">
+                                    <input type="checkbox" id="create-account">
+                                    <label for="create-account">
+                                        <span></span>
+                                        Create Account?
+                                    </label>
+                                    <div class="caption">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+                                        <input class="input" type="password" name="password" placeholder="Enter Your Password">
+                                    </div>
+                                </div>
+                            </div>*@
+                    </div>
+                    <!-- /Billing Details -->
+                    <!-- Shiping Details -->
+                    @*<div class="shiping-details">
+                        <div class="section-title">
+                            <h3 class="title">Shiping address</h3>
+                        </div>
+                        <div class="input-checkbox">
+                            <input type="checkbox" id="shiping-address">
+                            <label for="shiping-address">
+                                <span></span>
+                                Ship to a diffrent address?
+                            </label>
+                            <div class="caption">
+                                <div class="form-group">
+                                    <input class="input" type="text" name="first-name" placeholder="First Name">
+                                </div>
+                                <div class="form-group">
+                                    <input class="input" type="text" name="last-name" placeholder="Last Name">
+                                </div>
+                                <div class="form-group">
+                                    <input class="input" type="email" name="email" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <input class="input" type="text" name="address" placeholder="Address">
+                                </div>
+                                <div class="form-group">
+                                    <input class="input" type="text" name="city" placeholder="City">
+                                </div>
+                                <div class="form-group">
+                                    <input class="input" type="text" name="country" placeholder="Country">
+                                </div>
+                                <div class="form-group">
+                                    <input class="input" type="text" name="zip-code" placeholder="ZIP Code">
+                                </div>
+                                <div class="form-group">
+                                    <input class="input" type="tel" name="tel" placeholder="Telephone">
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
+                    <!-- /Shiping Details -->
+                    <!-- Order notes -->
+                    @*<div class="order-notes">
+                            <textarea class="input" placeholder="Order Notes"></textarea>
+                        </div>*@
+                    <!-- /Order notes -->
+                </div>
+
+                <!-- Order Details -->
+                <div class="col-md-5 order-details">
+                    <div class="section-title text-center">
+                        <h3 class="title">Hóa đơn</h3>
+                    </div>
+                    <div class="order-summary">
+                        <div class="order-col">
+                            <div><strong>Sản phẩm</strong></div>
+                            <div><strong>Đơn giá</strong></div>
+                        </div>
+                            @if (Session["cart"] != null)
+                            {
+                                foreach (var item in (List<SanPham>)Session["cart"])
+                                {
+                                    <div class="order-col">
+                                        <div>1x @item.TenSP</div>
+                                        <div>@item.DonGia.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")).Replace(",", ".") VND </div>
+                                    </div>
+                                    tongtien = item.DonGia + tongtien;
+                                }
+
+                            }
+                            else
+                            {
+                                <p>Không có sản phẩm nào để hiển thị</p>
+                            }
+                        <div class="order-col">
+                            <div>Vận chuyển</div>
+                            <div><strong>FREE</strong></div>
+                        </div>
+                        <div class="order-col">
+                            <div><strong>Tổng tiền: </strong></div>
+                            <div><strong class="order-total">@tongtien.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")).Replace(",", ".") VND </strong></div>
+                        </div>
+                    </div>
+                    <div class="payment-method">
+                        <div class="input-radio">
+                            <input type="radio" name="payment" id="payment-1">
+                            <label for="payment-1">
+                                <span></span>
+                                Direct Bank Transfer
+                            </label>
+                            <div class="caption">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div>
+                        </div>
+                        <div class="input-radio">
+                            <input type="radio" name="payment" id="payment-2">
+                            <label for="payment-2">
+                                <span></span>
+                                Cheque Payment
+                            </label>
+                            <div class="caption">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div>
+                        </div>
+                        <div class="input-radio">
+                            <input type="radio" name="payment" id="payment-3">
+                            <label for="payment-3">
+                                <span></span>
+                                Paypal System
+                            </label>
+                            <div class="caption">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-checkbox">
+                        <input type="checkbox" id="terms">
+                        <label for="terms">
+                            <span></span>
+                            I've read and accept the <a href="#">terms & conditions</a>
+                        </label>
+                    </div>
+                    <a href="#" class="primary-btn order-submit">Thanh Toán</a>
+                </div>
+                <!-- /Order Details -->
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+}
+<!-- SECTION -->
+<!-- /SECTION -->

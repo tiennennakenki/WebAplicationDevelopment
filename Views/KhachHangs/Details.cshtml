@@ -1,0 +1,77 @@
+﻿@model DoAnWeb.Models.KhachHang
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .left {
+        text-align: end;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Hồ Sơ Của Tôi</h3>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-subtitle mb-2 text-muted">Quản lý thông tin hồ sơ để bảo mật tài khoản</h6>
+                    <hr />
+                    <dl class="row">
+                        <dt class="col-sm-3 left">
+                            Họ tên
+                        </dt>
+                        <dd class="col-sm-9">
+                            @Html.DisplayFor(model => model.HoTen)
+                        </dd>
+
+                        <dt class="col-sm-3 left">
+                            Địa chỉ
+                        </dt>
+                        <dd class="col-sm-9">
+                            @Html.DisplayFor(model => model.DiaChi)
+                        </dd>
+
+                        <dt class="col-sm-3 left">
+                            SĐT
+                        </dt>
+                        <dd class="col-sm-9">
+                            @Html.DisplayFor(model => model.SDT)
+                        </dd>
+
+                        <dt class="col-sm-3 left">
+                            Giới Tính
+                        </dt>
+                        <dd class="col-sm-9 ">
+                            @if (Model.GioiTinh == true)
+                            {
+                                <span>Nam</span>
+                            }
+                            else
+                            {
+                                <span>Nữ</span>
+                            }
+                        </dd>
+                        <dt class="col-sm-3 left">Ngày Sinh</dt>
+                        <dd class="col-sm-9 ">
+                            @Html.DisplayFor(model => model.NgaySinh)
+                        </dd>
+                        <dt class="col-sm-3 left">
+                            Email
+                        </dt>
+                        <dd class="col-sm-9 ">
+                            @Html.DisplayFor(model => model.Email)
+                        </dd>
+                    </dl>
+                </div>
+                <div class="card-footer text-right">
+                    @Html.ActionLink("Sửa", "Edit", new { id = Model.MaKH }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("<- Trang chủ", "Default", "SanPhams", null, new { @class = "btn btn-secondary" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
