@@ -17,6 +17,9 @@ namespace DoAnWeb.Controllers
         public ActionResult RemoveFromCart(string id)
         {
             if (id == null)
+
+
+            
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
